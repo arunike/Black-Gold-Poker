@@ -1,16 +1,16 @@
 export const COLORS = {
-  VOID: '#020204',
-  GOLD: '#C9A55C',
-  GOLD_EMISSIVE: '#ffaa00',
-  MYSTIC_PURPLE: '#1a1025',
-  PARTICLE: '#ebd69c'
+	VOID: '#020204',
+	GOLD: '#C9A55C',
+	GOLD_EMISSIVE: '#ffaa00',
+	MYSTIC_PURPLE: '#1a1025',
+	PARTICLE: '#ebd69c',
 };
 
 export const SUITS = [
-  { name: 'Spades', symbol: '♠' },
-  { name: 'Hearts', symbol: '♥' },
-  { name: 'Clubs', symbol: '♣' },
-  { name: 'Diamonds', symbol: '♦' }
+	{ name: 'Spades', symbol: '♠' },
+	{ name: 'Hearts', symbol: '♥' },
+	{ name: 'Clubs', symbol: '♣' },
+	{ name: 'Diamonds', symbol: '♦' },
 ];
 
 export const RANKS = ['A', 'K', 'Q', 'J', '10', '9', '8', '7'];

@@ -6,68 +6,66 @@ import { GameState, GestureType } from './types';
 import type { HandPosition, CardReading } from './types';
 
 const App: React.FC = () => {
-  const [gameState, setGameState] = useState<GameState>(GameState.INITIALIZING);
-  const [started, setStarted] = useState(false);
-  const [handPosition, setHandPosition] = useState<HandPosition>({
-    x: 0,
-    y: 0,
-    gesture: GestureType.UNKNOWN,
-    isShaking: false,
-    detected: false
-  });
-  const [currentReading, setCurrentReading] = useState<CardReading | null>(null);
+	const [gameState, setGameState] = useState<GameState>(GameState.INITIALIZING);
+	const [started, setStarted] = useState(false);
+	const [handPosition, setHandPosition] = useState<HandPosition>({
+		x: 0,
+		y: 0,
+		gesture: GestureType.UNKNOWN,
+		isShaking: false,
+		detected: false,
+	});
+	const [currentReading, setCurrentReading] = useState<CardReading | null>(null);
 
-  // Callback for when hand moves
-  const handleHandUpdate = useCallback((pos: HandPosition) => {
-    setHandPosition(pos);
-    
-    // Auto-transition from Init to Stacked once detection starts
-    setGameState(prev => {
-        if (prev === GameState.INITIALIZING) return GameState.STACKED;
-        return prev;
-    });
-  }, []);
+	// Callback for when hand moves
+	const handleHandUpdate = useCallback((pos: HandPosition) => {
+		setHandPosition(pos);
 
-  const handleStart = () => {
-    setStarted(true);
-  };
+		// Auto-transition from Init to Stacked once detection starts
+		setGameState((prev) => {
+			if (prev === GameState.INITIALIZING) return GameState.STACKED;
+			return prev;
+		});
+	}, []);
 
-  const handleReset = () => {
-    setGameState(GameState.STACKED);
-    setCurrentReading(null);
-  };
+	const handleStart = () => {
+		setStarted(true);
+	};
 
-  return (
-    <div className="relative w-full h-screen overflow-hidden bg-void select-none">
-      
-      {/* 3D Scene Layer */}
-      <Experience 
-        handPosition={handPosition} 
-        gameState={gameState} 
-        setGameState={setGameState}
-        setReading={setCurrentReading}
-      />
+	const handleReset = () => {
+		setGameState(GameState.STACKED);
+		setCurrentReading(null);
+	};
 
-      {/* 2D UI Layer */}
-      <UIOverlay 
-        gameState={gameState} 
-        reading={currentReading}
-        onReset={handleReset}
-        onStart={handleStart}
-        started={started}
-      />
+	return (
+		<div className="relative w-full h-screen overflow-hidden bg-void select-none">
+			{/* 3D Scene Layer */}
+			<Experience
+				handPosition={handPosition}
+				gameState={gameState}
+				setGameState={setGameState}
+				setReading={setCurrentReading}
+			/>
 
-      {/* Logic / Sensor Layer */}
-      {started && (
-        <HandTracker 
-          onUpdate={handleHandUpdate} 
-          gameState={gameState}
-          setGameState={setGameState}
-        />
-      )}
+			{/* 2D UI Layer */}
+			<UIOverlay
+				gameState={gameState}
+				reading={currentReading}
+				onReset={handleReset}
+				onStart={handleStart}
+				started={started}
+			/>
 
-    </div>
-  );
+			{/* Logic / Sensor Layer */}
+			{started && (
+				<HandTracker
+					onUpdate={handleHandUpdate}
+					gameState={gameState}
+					setGameState={setGameState}
+				/>
+			)}
+		</div>
+	);
 };
 
 export default App;
