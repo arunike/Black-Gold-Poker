@@ -32,7 +32,7 @@ Built with:
 
 ### Prerequisites
 
-- Node.js (v20.1.0 or higher)
+- Node.js (v18 or higher)
 - npm package manager
 - Webcam for gesture controls
 
@@ -109,14 +109,6 @@ src/
 └── assets/           # Static assets
 ```
 
-## 🎨 Key Components
-
-1. **HandTracker** - Webcam integration with MediaPipe for real-time gesture detection
-2. **TarotDeck** - Card physics engine with state machine for different formations
-3. **Card** - Individual 3D card with materials, text, and particle effects
-4. **Experience** - 3D scene setup with lighting, camera, and post-processing
-5. **UIOverlay** - Instructions, game state display, and gesture guide
-
 ## 🎯 Game States
 
 - **INITIALIZING** - Welcome screen with start button
@@ -126,24 +118,6 @@ src/
 - **SPIRAL** - Mystical vortex formation
 - **FOCUSED** - Single card selected and brought forward
 - **REVEALED** - Selected card flipped to show reading
-
-## 🔧 Development
-
-### Type Safety
-
-This project uses TypeScript with strict mode enabled for maximum type safety. Key types include:
-
-- `GameState` - Enum for game states
-- `GestureType` - Hand gesture classifications
-- `CardData` - Card information structure
-- `HandPosition` - Hand tracking data
-
-### Performance Optimization
-
-- Dynamic LOD (Level of Detail) for cards
-- Efficient particle systems
-- Optimized render loop with requestAnimationFrame
-- GPU-accelerated hand tracking
 
 ## 🎨 Customization
 
@@ -179,23 +153,6 @@ npm run build
 
 The optimized production build will be in the `dist/` directory. Deploy to any static hosting service.
 
-## 🐛 Troubleshooting
-
-### Webcam Issues
-- Ensure webcam permissions are granted
-- Check if other apps are using the webcam
-- Try a different browser (Chrome/Edge recommended)
-
-### Gesture Detection
-- Ensure good lighting conditions
-- Keep hand within camera frame
-- Position hand 1-2 feet from camera
-
-### Performance
-- Close unnecessary browser tabs
-- Update graphics drivers
-- Reduce post-processing effects if needed
-
 ## 📄 License
 
 This project is open source and available under the MIT License.
@@ -204,7 +161,7 @@ This project is open source and available under the MIT License.
 
 **Richie Zhou**
 
-- GitHub: [@yourusername](https://github.com/yourusername)
+- GitHub: [@arunike](https://github.com/)
 
 ## 🙏 Acknowledgments
 
@@ -212,17 +169,3 @@ This project is open source and available under the MIT License.
 - 3D graphics using [Three.js](https://threejs.org/) and [React Three Fiber](https://docs.pmnd.rs/react-three-fiber/)
 - Visual effects with [Postprocessing](https://github.com/pmndrs/postprocessing)
 - Inspired by mystical tarot aesthetics
-
-## 🔮 Future Enhancements
-
-- [ ] Add more card formations
-- [ ] Implement AI-powered card readings
-- [ ] Add sound effects and background music
-- [ ] Multi-language support
-- [ ] Save favorite readings
-- [ ] Custom card deck designs
-- [ ] Mobile touch controls as fallback
-
----
-
-*Experience the magic of gesture-controlled tarot with Black Gold Poker* ✨
